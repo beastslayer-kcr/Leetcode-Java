@@ -1,0 +1,23 @@
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n=nums.length;
+        
+        if(k>n){
+            k=k%n;
+        }
+        rotate(0,n-k-1,nums);
+        rotate(n-k,n-1,nums);
+        rotate(0,n-1,nums);
+    }
+    public void rotate(int low, int high, int[] nums){
+        while(high>low){
+            nums[high] = nums[high]^nums[low];
+            nums[low] = nums[low]^nums[high];
+            nums[high] = nums[high]^nums[low];
+            low++;
+            high--;
+        }
+        
+    }
+}
