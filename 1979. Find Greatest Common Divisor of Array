@@ -1,0 +1,16 @@
+class Solution {
+    public int findGCD(int[] nums) {
+        int maxm=Integer.MIN_VALUE,minm=Integer.MAX_VALUE;
+        for(int i=0;i<nums.length;i++){
+            maxm = Math.max(maxm,nums[i]);
+            minm = Math.min(minm,nums[i]);
+        }
+        if(minm==0) return maxm;
+        while(maxm%minm!=0){
+            int temp = maxm%minm;
+            maxm=minm;
+            minm=temp;
+        }
+        return minm;
+    }
+}
